@@ -1,874 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Syafiqah Syahirah · Design Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root {
-  --platinum: #EEE2DF;
-  --thistle: #E0C1D8;
-  --liberty: #5B61B2;
-  --bleu: #2F80E4;
-  --lbb: #6DA0E1;
-  --ink: #1A1A2E;
-  --ink2: #4A4A6A;
-  --ink3: #8888AA;
-  --glass: rgba(238,226,223,0.55);
-  --glass2: rgba(255,255,255,0.45);
-  --border: rgba(91,97,178,0.18);
-  --nav-w: 210px;
-  --r: 14px;
-  --r-sm: 8px;
-  --tr: .2s cubic-bezier(.4,0,.2,1);
-  --font: 'Space Grotesk', sans-serif;
-  --font-d: 'DM Serif Display', serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--font);background:#EEE2DF;color:var(--ink);overflow-x:hidden;min-height:100vh;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purple Theme Card Layout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#6253B0',
+            'brand-dark': '#4D3E9B',
+            'brand-light': '#7A6BC9',
+            body: '#253149',
+            'bg-light': '#F8FEFC',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #253149;
+      color: #253149;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
 
-/* BG */
-body::before{content:'';position:fixed;inset:0;z-index:-2;
-  background:
-    radial-gradient(ellipse 70% 55% at 15% 0%, rgba(224,193,216,.7) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 85% 90%, rgba(109,160,225,.35) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 55% 45%, rgba(91,97,178,.12) 0%, transparent 55%),
-    #EEE2DF;
-}
-#petal-c{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;}
+    /* SVG Background Pattern matching Image 1 */
+    .purple-card-bg {
+      background-color: #6253B0;
+      background-image: 
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.15) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.18'%3E%3Ccircle cx='500' cy='100' r='80'/%3E%3Ccircle cx='500' cy='100' r='140'/%3E%3Ccircle cx='500' cy='100' r='200'/%3E%3Ccircle cx='500' cy='100' r='260'/%3E%3Ccircle cx='500' cy='100' r='320'/%3E%3Ccircle cx='100' cy='500' r='90'/%3E%3Ccircle cx='100' cy='500' r='160'/%3E%3Ccircle cx='100' cy='500' r='230'/%3E%3Ccircle cx='100' cy='500' r='300'/%3E%3Cpath d='M-100,200 Q200,100 500,400 T1100,300' stroke-dasharray='6 6'/%3E%3Cpath d='M-50,300 Q250,200 550,500' stroke-dasharray='4 4'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.25'%3E%3Ccircle cx='150' cy='120' r='3'/%3E%3Ccircle cx='220' cy='80' r='2'/%3E%3Ccircle cx='420' cy='280' r='3.5'/%3E%3Ccircle cx='350' cy='450' r='2'/%3E%3Ccircle cx='180' cy='380' r='3'/%3E%3Cpolygon points='400,80 405,90 415,95 405,100 400,110 395,100 385,95 395,90' fill-opacity='0.3'/%3E%3Cpolygon points='120,250 123,256 130,259 123,262 120,268 117,262 110,259 117,256' fill-opacity='0.25'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
 
-/* SIDEBAR */
-.sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:var(--nav-w);
-  display:flex;flex-direction:column;
-  padding:1.8rem 1.4rem;z-index:60;
-  background:rgba(238,226,223,.72);
-  border-right:1px solid var(--border);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-}
-.sb-logo{margin-bottom:2.2rem;}
-.sb-logo h1{font-family:var(--font-d);font-style:italic;font-size:1.1rem;line-height:1.25;color:var(--ink);}
-.sb-logo span{display:block;font-size:.68rem;font-weight:300;color:var(--ink3);letter-spacing:.06em;margin-top:.25rem;}
-.nav-links{list-style:none;display:flex;flex-direction:column;gap:.15rem;flex:1;}
-.nav-links a{
-  display:flex;align-items:center;gap:.55rem;
-  font-size:.82rem;font-weight:400;color:var(--ink2);
-  text-decoration:none;padding:.48rem .75rem;
-  border-radius:var(--r-sm);transition:all var(--tr);cursor:pointer;
-}
-.nav-links a .dot{width:4px;height:4px;border-radius:50%;background:var(--liberty);opacity:0;flex-shrink:0;transition:opacity var(--tr);}
-.nav-links a .nav-icon{font-size:.9rem;width:16px;text-align:center;}
-.nav-links a:hover,.nav-links a.active{background:rgba(91,97,178,.1);color:var(--liberty);}
-.nav-links a.active .dot{opacity:1;}
-.sb-foot{font-size:.66rem;color:var(--ink3);line-height:1.7;margin-top:auto;padding-top:1rem;}
-
-/* TOPBAR */
-.topbar{
-  position:sticky;top:0;z-index:40;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.6rem 1.8rem;
-  background:rgba(238,226,223,.75);
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  font-size:.72rem;color:var(--ink3);
-  gap:.5rem;
-}
-.breadcrumb{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
-.breadcrumb span{color:var(--liberty);}
-.breadcrumb .sep{opacity:.4;}
-.topbar-date{font-size:.7rem;color:var(--ink3);white-space:nowrap;}
-
-/* MAIN */
-main{margin-left:var(--nav-w);}
-.page{display:none;padding:1.6rem 2rem 3rem;}
-.page.active{display:block;}
-
-/* MOBILE NAV */
-.mob-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
-  background:rgba(238,226,223,.85);
-  border-top:1px solid var(--border);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  padding:.6rem 0 calc(.6rem + env(safe-area-inset-bottom,0px));
-  justify-content:space-around;
-}
-.mob-nav a{
-  display:flex;flex-direction:column;align-items:center;gap:.2rem;
-  font-size:.62rem;color:var(--ink3);text-decoration:none;padding:.2rem .6rem;
-  transition:color var(--tr);
-}
-.mob-nav a.active,.mob-nav a:hover{color:var(--liberty);}
-.mob-nav svg{width:18px;height:18px;}
-
-/* ═══ GLASS CARD ═══ */
-.glass{
-  background:var(--glass2);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-}
-
-/* ═══════════════════
-   HOME / DASHBOARD
-═══════════════════ */
-.dash-grid{
-  display:grid;
-  grid-template-columns:1fr 320px;
-  grid-template-rows:auto auto;
-  gap:1.2rem;
-}
-/* Hero banner */
-.dash-banner{
-  grid-column:1;
-  border-radius:var(--r);
-  overflow:hidden;
-  position:relative;
-  min-height:200px;
-  background:linear-gradient(135deg,#5B61B2 0%,#2F80E4 60%,#6DA0E1 100%);
-  display:flex;align-items:flex-end;
-  padding:1.6rem 2rem;
-  color:#fff;
-}
-.dash-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E") center/200px;opacity:.6;}
-.dash-banner-orb{position:absolute;right:-30px;top:-40px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 70%);pointer-events:none;}
-.dash-banner-content{position:relative;z-index:1;}
-.dash-banner-eyebrow{font-size:.7rem;font-weight:300;letter-spacing:.12em;opacity:.8;margin-bottom:.5rem;}
-.dash-banner h2{font-family:var(--font-d);font-style:italic;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;margin-bottom:.8rem;}
-.dash-banner p{font-size:.82rem;opacity:.85;max-width:38ch;line-height:1.65;margin-bottom:1.1rem;}
-.btn{font-family:var(--font);font-size:.78rem;font-weight:500;padding:.45rem 1.1rem;border-radius:99px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:all var(--tr);display:inline-flex;align-items:center;gap:.35rem;letter-spacing:.02em;}
-.btn-white{background:#fff;color:var(--liberty);}
-.btn-white:hover{background:var(--platinum);color:var(--ink);}
-.btn-liberty{background:var(--liberty);color:#fff;border-color:var(--liberty);}
-.btn-liberty:hover{background:var(--bleu);border-color:var(--bleu);}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--border);}
-.btn-ghost:hover{background:rgba(91,97,178,.1);border-color:var(--liberty);color:var(--liberty);}
-.btn-sm{font-size:.72rem;padding:.32rem .8rem;}
-
-/* Right column widgets */
-.dash-right{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:1.2rem;}
-.widget-title{font-size:.68rem;font-weight:500;letter-spacing:.08em;color:var(--ink3);margin-bottom:.75rem;}
-.notif-list{display:flex;flex-direction:column;gap:.6rem;}
-.notif-item{display:flex;gap:.6rem;align-items:flex-start;font-size:.75rem;}
-.notif-icon{width:28px;height:28px;border-radius:8px;background:rgba(91,97,178,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;}
-.notif-text{color:var(--ink2);line-height:1.55;}
-.notif-text strong{display:block;color:var(--ink);font-weight:500;font-size:.74rem;}
-
-/* Quick stats row */
-.dash-stats{grid-column:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.stat-card{padding:1rem 1.1rem;background:var(--glass2);border:1px solid var(--border);border-radius:var(--r);backdrop-filter:blur(12px);}
-.stat-label{font-size:.65rem;font-weight:400;color:var(--ink3);letter-spacing:.06em;margin-bottom:.3rem;}
-.stat-val{font-family:var(--font-d);font-size:1.5rem;color:var(--ink);}
-.stat-sub{font-size:.68rem;color:var(--ink3);margin-top:.2rem;}
-
-/* Highlight strip */
-.highlight-strip{margin-top:1.4rem;}
-.hl-label{font-size:.68rem;font-weight:400;letter-spacing:.08em;color:var(--ink3);margin-bottom:.8rem;}
-.hl-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;}
-.hl-card{
-  border-radius:var(--r-sm);overflow:hidden;
-  border:1px solid var(--border);
-  background:var(--glass2);backdrop-filter:blur(10px);
-  cursor:pointer;transition:transform var(--tr),border-color var(--tr);
-}
-.hl-card:hover{transform:translateY(-2px);border-color:var(--liberty);}
-.hl-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
-.hl-info{padding:.5rem .6rem;}
-.hl-info h5{font-size:.75rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.hl-info span{font-size:.65rem;color:var(--ink3);}
-
-/* ═══════════════════
-   PROJECTS GALLERY
-═══════════════════ */
-.gallery-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem;}
-.gallery-header h2{font-family:var(--font-d);font-style:italic;font-size:1.8rem;}
-.gallery-header p{font-size:.82rem;color:var(--ink3);margin-top:.25rem;}
-.cat-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem;}
-.filter-btn{font-size:.75rem;padding:.3rem .9rem;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--ink2);cursor:pointer;font-family:var(--font);transition:all var(--tr);}
-.filter-btn.active,.filter-btn:hover{background:var(--liberty);color:#fff;border-color:var(--liberty);}
-
-/* Hanging card gallery */
-.book-gallery{
-  display:flex;gap:1.4rem;flex-wrap:wrap;
-  padding:1.5rem .5rem 2rem;
-  position:relative;
-}
-/* hanging wire */
-.book-gallery::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(91,97,178,.25) 10%,rgba(91,97,178,.25) 90%,transparent);}
-
-.book-card{
-  width:180px;flex-shrink:0;
-  display:flex;flex-direction:column;align-items:center;
-  cursor:pointer;
-  transition:transform var(--tr);
-  position:relative;
-}
-.book-card:hover{transform:translateY(4px) rotate(.5deg);}
-/* string */
-.book-card::before{content:'';position:absolute;top:-18px;left:50%;width:1px;height:20px;background:rgba(91,97,178,.4);}
-/* pin dot */
-.book-card::after{content:'';position:absolute;top:-22px;left:calc(50% - 4px);width:8px;height:8px;border-radius:50%;background:var(--liberty);box-shadow:0 0 0 2px #fff;}
-
-.book-cover{
-  width:100%;height:220px;border-radius:10px;
-  border:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
-  font-size:2.4rem;
-  position:relative;overflow:hidden;
-  box-shadow:3px 5px 18px rgba(91,97,178,.15);
-  transition:box-shadow var(--tr);
-}
-.book-card:hover .book-cover{box-shadow:5px 8px 28px rgba(91,97,178,.28);}
-.book-cover-label{font-size:.65rem;font-weight:500;color:rgba(255,255,255,.9);letter-spacing:.06em;text-align:center;padding:0 .5rem;}
-.book-card-title{margin-top:.55rem;font-size:.75rem;font-weight:500;text-align:center;color:var(--ink);max-width:160px;}
-.book-card-cat{font-size:.62rem;color:var(--ink3);margin-top:.1rem;text-align:center;}
-.in-progress-badge{
-  position:absolute;top:.4rem;right:.4rem;
-  background:rgba(242,166,45,.95);color:#fff;
-  font-size:.55rem;font-weight:600;letter-spacing:.06em;
-  padding:.15rem .45rem;border-radius:99px;
-  border:1px solid rgba(255,255,255,.4);
-}
-
-/* Add project card */
-.book-card-add .book-cover{border-style:dashed;background:transparent;opacity:.55;}
-.book-card-add:hover .book-cover{opacity:1;border-color:var(--liberty);}
-.book-card-add::before,.book-card-add::after{display:none;}
-
-/* ═══════════════════
-   PROJECT POPUP
-═══════════════════ */
-.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,26,46,.45);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem;}
-.overlay.open{display:flex;}
-.popup-box{
-  background:var(--platinum);
-  border:1px solid var(--border);border-radius:18px;
-  max-width:520px;width:100%;max-height:88vh;overflow-y:auto;
-  box-shadow:0 24px 64px rgba(91,97,178,.22);
-  animation:fadeUp .24s ease both;
-  position:relative;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
-.popup-thumb{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;border-radius:17px 17px 0 0;}
-.popup-body{padding:1.4rem 1.6rem 1.8rem;}
-.popup-cat{font-size:.68rem;color:var(--liberty);letter-spacing:.08em;margin-bottom:.3rem;}
-.popup-title{font-family:var(--font-d);font-style:italic;font-size:1.6rem;margin-bottom:.6rem;}
-.popup-desc{font-size:.84rem;color:var(--ink2);line-height:1.78;margin-bottom:1.1rem;}
-.popup-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem;}
-.tag{font-size:.65rem;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--border);color:var(--ink3);background:rgba(255,255,255,.4);}
-.popup-actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;}
-.popup-close{position:absolute;top:.9rem;right:.9rem;background:rgba(255,255,255,.55);border:1px solid var(--border);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;transition:background var(--tr);}
-.popup-close:hover{background:#fff;}
-
-/* ═══════════════════
-   PROJECT FULL PAGE
-═══════════════════ */
-#proj-detail{
-  --accent:#5B61B2;
-}
-.detail-back{background:none;border:none;cursor:pointer;font-family:var(--font);font-size:.8rem;color:var(--ink3);display:flex;align-items:center;gap:.35rem;padding:0;margin-bottom:1.2rem;transition:color var(--tr);}
-.detail-back:hover{color:var(--liberty);}
-.detail-layout{display:grid;grid-template-columns:1fr 300px;gap:1.6rem;align-items:start;}
-
-/* Drag-rearrange panels */
-.detail-panels{display:flex;flex-direction:column;gap:1rem;}
-.detail-panel{
-  background:var(--glass2);border:1px solid var(--border);border-radius:var(--r);
-  overflow:hidden;backdrop-filter:blur(12px);
-  position:relative;
-}
-.panel-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.7rem 1rem;border-bottom:1px solid var(--border);
-  cursor:grab;user-select:none;
-}
-.panel-header:active{cursor:grabbing;}
-.panel-label{font-size:.68rem;font-weight:500;letter-spacing:.08em;color:var(--liberty);}
-.panel-drag-handle{font-size:.75rem;color:var(--ink3);opacity:.5;}
-.panel-body{padding:.9rem 1rem;}
-.panel-body p,.panel-body div{font-size:.84rem;line-height:1.78;color:var(--ink2);}
-[contenteditable]{outline:none;cursor:text;min-width:20px;}
-[contenteditable]:hover{background:rgba(91,97,178,.05);border-radius:4px;}
-[contenteditable]:focus{background:rgba(91,97,178,.08);border-radius:4px;box-shadow:0 0 0 1.5px var(--liberty);}
-
-.detail-sidebar{display:flex;flex-direction:column;gap:1rem;}
-.detail-hero-img{
-  width:100%;aspect-ratio:3/2;border-radius:var(--r);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:4rem;
-  background:var(--glass2);backdrop-filter:blur(10px);
-  position:relative;overflow:hidden;
-}
-.detail-meta-card{padding:1rem 1.1rem;background:var(--glass2);border:1px solid var(--border);border-radius:var(--r);backdrop-filter:blur(10px);}
-.meta-row{display:flex;flex-direction:column;gap:.15rem;padding:.45rem 0;border-bottom:1px solid rgba(91,97,178,.1);}
-.meta-row:last-child{border-bottom:none;}
-.meta-row label{font-size:.62rem;color:var(--ink3);letter-spacing:.06em;}
-.meta-row span{font-size:.82rem;color:var(--ink);}
-.colour-swatches{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem;}
-.swatch{width:28px;height:28px;border-radius:6px;border:1.5px solid rgba(255,255,255,.5);cursor:pointer;transition:transform var(--tr);}
-.swatch:hover{transform:scale(1.15);}
-
-/* ═══════════════════
-   ABOUT ME
-═══════════════════ */
-.about-sheet{max-width:860px;}
-.about-header-row{display:flex;align-items:flex-start;gap:1.4rem;margin-bottom:1.6rem;flex-wrap:wrap;}
-.about-avatar{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--thistle),var(--lbb));border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:2.4rem;flex-shrink:0;}
-.about-name-block h2{font-family:var(--font-d);font-style:italic;font-size:2rem;line-height:1.1;}
-.about-name-block p{font-size:.82rem;color:var(--liberty);font-weight:500;letter-spacing:.04em;margin-top:.2rem;}
-.about-speech{position:relative;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.6rem .9rem;font-size:.78rem;color:var(--ink2);max-width:200px;margin-top:.5rem;}
-.about-speech::before{content:'';position:absolute;left:-7px;top:12px;border:4px solid transparent;border-right-color:#fff;filter:drop-shadow(-1px 0 0 var(--border));}
-
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.4rem;}
-.about-block{padding:1rem 1.1rem;background:var(--glass2);border:1px solid var(--border);border-radius:var(--r);backdrop-filter:blur(10px);}
-.about-block-label{font-size:.62rem;color:var(--liberty);letter-spacing:.09em;font-weight:500;margin-bottom:.55rem;display:flex;align-items:center;gap:.35rem;}
-.about-block p,.about-block ul{font-size:.82rem;color:var(--ink2);line-height:1.75;}
-.about-block ul{list-style:none;display:flex;flex-direction:column;gap:.2rem;}
-.about-block ul li::before{content:'▸ ';color:var(--liberty);font-size:.65rem;}
-
-.skill-row2{display:flex;align-items:center;gap:.8rem;margin-bottom:.55rem;}
-.skill-icon{width:28px;height:28px;border-radius:6px;background:rgba(91,97,178,.1);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
-.skill-name{font-size:.78rem;min-width:120px;}
-.skill-track{flex:1;height:6px;background:rgba(91,97,178,.12);border-radius:3px;overflow:hidden;}
-.skill-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--liberty),var(--lbb));transition:width 1s ease;}
-.skill-note{font-size:.62rem;color:var(--ink3);min-width:55px;text-align:right;}
-
-/* ═══════════════════
-   CONTACT
-═══════════════════ */
-.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;max-width:820px;}
-.contact-form{display:flex;flex-direction:column;gap:.75rem;}
-.f-label{font-size:.7rem;color:var(--ink3);letter-spacing:.04em;margin-bottom:.25rem;display:block;}
-.f-input{width:100%;font-family:var(--font);font-size:.85rem;padding:.62rem .9rem;border:1px solid var(--border);border-radius:var(--r-sm);background:rgba(255,255,255,.55);color:var(--ink);outline:none;transition:border-color var(--tr);backdrop-filter:blur(8px);}
-.f-input:focus{border-color:var(--liberty);}
-.f-ta{min-height:100px;resize:vertical;}
-.contact-side{display:flex;flex-direction:column;gap:.9rem;}
-.contact-card{padding:1.1rem 1.2rem;background:var(--glass2);border:1px solid var(--border);border-radius:var(--r);backdrop-filter:blur(10px);}
-.contact-card h4{font-family:var(--font-d);font-style:italic;font-size:1rem;margin-bottom:.75rem;}
-.c-link{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink2);text-decoration:none;padding:.35rem 0;border-bottom:1px solid rgba(91,97,178,.08);transition:color var(--tr);}
-.c-link:last-child{border-bottom:none;}
-.c-link:hover{color:var(--liberty);}
-.c-icon{width:22px;text-align:center;font-size:.9rem;}
-
-/* ═══════════════════
-   FORM MODAL
-═══════════════════ */
-.form-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(26,26,46,.5);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
-.form-overlay.open{display:flex;}
-.form-box{background:var(--platinum);border:1px solid var(--border);border-radius:18px;padding:1.6rem 1.8rem;width:100%;max-width:460px;max-height:88vh;overflow-y:auto;animation:fadeUp .22s ease both;}
-.form-box h3{font-family:var(--font-d);font-style:italic;font-size:1.4rem;margin-bottom:1.2rem;}
-.f-group{margin-bottom:.65rem;}
-.form-actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.2rem;}
-
-/* TOAST */
-.toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--liberty);color:#fff;padding:.45rem 1.2rem;border-radius:99px;font-size:.78rem;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:999;white-space:nowrap;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:768px){
-  .sidebar{display:none;}
-  .mob-nav{display:flex;}
-  main{margin-left:0;padding-bottom:72px;}
-  .page{padding:1rem 1rem 2rem;}
-  .topbar{padding:.5rem 1rem;}
-  .dash-grid{grid-template-columns:1fr;}
-  .dash-right{grid-column:1;}
-  .dash-stats{grid-template-columns:repeat(3,1fr);}
-  .hl-row{grid-template-columns:repeat(2,1fr);}
-  .detail-layout{grid-template-columns:1fr;}
-  .about-grid{grid-template-columns:1fr;}
-  .contact-layout{grid-template-columns:1fr;}
-}
-@media(max-width:480px){
-  .dash-stats{grid-template-columns:1fr 1fr;}
-  .hl-row{grid-template-columns:1fr 1fr;}
-  .book-gallery{justify-content:center;}
-}
-</style>
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #6253B0;
+      border-radius: 4px;
+    }
+  </style>
 </head>
-<body>
-<canvas id="petal-c"></canvas>
+<body class="min-h-screen bg-body flex flex-col items-center justify-center p-4 sm:p-6 lg:p-12">
 
-<!-- SIDEBAR -->
-<nav class="sidebar">
-  <div class="sb-logo">
-    <h1>Syafiqah<br>Syahirah</h1>
-    <span>Design Portfolio</span>
-  </div>
-  <ul class="nav-links">
-    <li><a data-page="home" class="active"><span class="nav-icon">⌂</span><span class="dot"></span>Dashboard</a></li>
-    <li><a data-page="projects"><span class="nav-icon">◫</span><span class="dot"></span>Projects</a></li>
-    <li><a data-page="about"><span class="nav-icon">◎</span><span class="dot"></span>About Me</a></li>
-    <li><a data-page="contact"><span class="nav-icon">✉</span><span class="dot"></span>Contact</a></li>
-  </ul>
-  <div class="sb-foot">
-    Graphic Design<br>Illustration · Interface<br>3D Modelling
-  </div>
-</nav>
-
-<!-- MOBILE NAV -->
-<nav class="mob-nav">
-  <a data-page="home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Home</a>
-  <a data-page="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Projects</a>
-  <a data-page="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>About</a>
-  <a data-page="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
-</nav>
-
-<main>
-
-<!-- ═══ TOPBAR ═══ -->
-<div class="topbar" id="topbar">
-  <div class="breadcrumb">
-    <span id="bc-section">Dashboard</span>
-    <span class="sep" id="bc-sub" style="display:none">/ <span id="bc-sub-text"></span></span>
-  </div>
-  <div class="topbar-date" id="topbar-date"></div>
-</div>
-
-<!-- ═══════ HOME ═══════ -->
-<div id="home" class="page active">
-  <div class="dash-grid">
-
-    <!-- Banner -->
-    <div class="dash-banner">
-      <div class="dash-banner-orb"></div>
-      <div class="dash-banner-content">
-        <div class="dash-banner-eyebrow">DESIGN PORTFOLIO · SYAFIQAH SYAHIRAH</div>
-        <h2>Graphic Designer<br>× Illustrator</h2>
-        <p>Crafting visuals across print, digital, and beyond — from billboard campaigns to 3D environments.</p>
-        <a class="btn btn-white" data-page="projects">View Projects</a>
+  <!-- Main Container Layout matching Image 3 -->
+  <div class="w-full max-w-5xl bg-bg-light rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[640px]">
+    
+    <!-- LEFT PANEL: Purple Featured Card with Curved Pattern (Image 1 style) -->
+    <div class="w-full md:w-5/12 purple-card-bg text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+      
+      <!-- Top Decorative Elements -->
+      <div class="relative z-10 flex justify-between items-center">
+        <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase text-white/90 border border-white/20">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          Pro Feature
+        </span>
+        <button class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+          </svg>
+        </button>
       </div>
-    </div>
 
-    <!-- Right widgets -->
-    <div class="dash-right">
-      <div class="glass" style="padding:1rem 1.1rem">
-        <div class="widget-title">Highlights</div>
-        <div class="notif-list">
-          <div class="notif-item"><div class="notif-icon">🍦</div><div class="notif-text"><strong>Merry Ice-Cream Campaign</strong>Billboard, ATL & BTL — Adobe Illustrator</div></div>
-          <div class="notif-item"><div class="notif-icon">🌿</div><div class="notif-text"><strong>Luna Apothecary Brochure</strong>Dual-concept print design</div></div>
-          <div class="notif-item"><div class="notif-icon">🌸</div><div class="notif-text"><strong>JCCU Event Posters</strong>Animated social media series</div></div>
-          <div class="notif-item"><div class="notif-icon">📱</div><div class="notif-text"><strong>Chinese Sweets App</strong>Mobile UI/UX in Figma</div></div>
+      <!-- Center Featured Content -->
+      <div class="relative z-10 my-8">
+        <div class="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
         </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
+          Elevate Your Design System
+        </h2>
+        <p class="text-white/80 text-sm sm:text-base font-normal leading-relaxed">
+          Experience seamless layout integration with our custom purple vector styling and responsive UI card templates.
+        </p>
       </div>
-      <div class="glass" style="padding:1rem 1.1rem">
-        <div class="widget-title">In Progress</div>
-        <div class="notif-list">
-          <div class="notif-item"><div class="notif-icon" style="background:rgba(242,166,45,.15)">⚡</div><div class="notif-text"><strong>Interactive Quiz · PowerPoint</strong>12-slide animated quiz deck — VBA logic</div></div>
+
+      <!-- Bottom Card Stats/Action -->
+      <div class="relative z-10 pt-6 border-t border-white/15 flex items-center justify-between">
+        <div>
+          <p class="text-xs text-white/70 font-medium uppercase tracking-wider">Color Code</p>
+          <p class="text-lg font-bold text-white tracking-wide">#6253B0</p>
         </div>
+        <button class="bg-white text-brand hover:bg-bg-light px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2 group">
+          Explore
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- Stats -->
-    <div class="dash-stats">
-      <div class="stat-card"><div class="stat-label">Projects</div><div class="stat-val">12</div><div class="stat-sub">across 4 categories</div></div>
-      <div class="stat-card"><div class="stat-label">Categories</div><div class="stat-val">4</div><div class="stat-sub">Graphic · Illus · UI · 3D</div></div>
-      <div class="stat-card"><div class="stat-label">Tools</div><div class="stat-val">7+</div><div class="stat-sub">Ai · Ps · Id · Figma · Maya…</div></div>
-    </div>
-  </div>
-
-  <!-- Gallery strip -->
-  <div class="highlight-strip">
-    <div class="hl-label">Gallery highlights</div>
-    <div class="hl-row">
-      <div class="hl-card" onclick="openPopup('p1')"><div class="hl-thumb" style="background:linear-gradient(135deg,#FFB6C1,#FFD700)">🍦</div><div class="hl-info"><h5>Merry Ice-Cream</h5><span>Graphic Design</span></div></div>
-      <div class="hl-card" onclick="openPopup('p6')"><div class="hl-thumb" style="background:linear-gradient(135deg,#C8D5B9,#2F80E4)">🎌</div><div class="hl-info"><h5>JCCU Event Posters</h5><span>Graphic Design</span></div></div>
-      <div class="hl-card" onclick="openPopup('p7')"><div class="hl-thumb" style="background:linear-gradient(135deg,#E0C1D8,#9381FF)">🌸</div><div class="hl-info"><h5>Akiko Illustration</h5><span>Illustration</span></div></div>
-      <div class="hl-card" onclick="openPopup('p10')"><div class="hl-thumb" style="background:linear-gradient(135deg,#FFD6BE,#2F80E4)">📱</div><div class="hl-info"><h5>Chinese Sweets App</h5><span>Interface Design</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ PROJECTS ═══════ -->
-<div id="projects" class="page">
-  <div class="gallery-header">
-    <div>
-      <h2>Projects</h2>
-      <p>Tap a card to preview · click through for full details</p>
-    </div>
-    <button class="btn btn-liberty btn-sm" onclick="document.getElementById('addProjOverlay').classList.add('open')">+ Add project</button>
-  </div>
-  <div class="cat-filter" id="catFilter">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="Graphic Design">Graphic Design</button>
-    <button class="filter-btn" data-filter="Illustration">Illustration</button>
-    <button class="filter-btn" data-filter="Interface Design">Interface Design</button>
-    <button class="filter-btn" data-filter="3D Modelling">3D Modelling</button>
-    <button class="filter-btn" data-filter="In Progress">In Progress ⚡</button>
-  </div>
-  <div class="book-gallery" id="bookGallery"></div>
-</div>
-
-<!-- ═══════ PROJECT DETAIL ═══════ -->
-<div id="proj-detail" class="page">
-  <button class="detail-back" id="detailBack">← Back to Projects</button>
-  <div class="detail-layout">
-    <div class="detail-panels" id="detailPanels"></div>
-    <div class="detail-sidebar">
-      <div class="detail-hero-img" id="detailHeroImg"></div>
-      <div class="detail-meta-card" id="detailMeta"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ ABOUT ME ═══════ -->
-<div id="about" class="page">
-  <div class="about-sheet">
-    <div class="about-header-row">
-      <div class="about-avatar">🌸</div>
+    <!-- RIGHT PANEL: Dashboard Content Layout matching Image 3 -->
+    <div class="w-full md:w-7/12 p-8 sm:p-10 flex flex-col justify-between bg-bg-light">
+      
+      <!-- Top Section: Header & Actions -->
       <div>
-        <div class="about-name-block">
-          <h2 contenteditable="true" spellcheck="false">Syafiqah Syahirah</h2>
-          <p contenteditable="true" spellcheck="false">Graphic Designer × Illustrator</p>
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-body tracking-tight">Overview Panel</h1>
+            <p class="text-sm text-body/60 mt-1 font-medium">Manage your design specifications and tokens</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-body transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="about-speech" contenteditable="true" spellcheck="false">「Designing is how I think out loud.」</div>
-      </div>
-    </div>
 
-    <div class="about-grid">
-      <div class="about-block">
-        <div class="about-block-label">◎ Profile</div>
-        <ul>
-          <li contenteditable="true">Born: [Your date]</li>
-          <li contenteditable="true">Based: Malaysia</li>
-          <li contenteditable="true">Uni: [Your university]</li>
-          <li contenteditable="true">Programme: [Your course]</li>
-          <li contenteditable="true">Social: @monokitsune</li>
-        </ul>
-      </div>
-      <div class="about-block">
-        <div class="about-block-label">◎ About</div>
-        <p contenteditable="true" spellcheck="false">A graphic designer and illustrator with a background spanning print campaigns, character design, UI/UX, and 3D modelling. I enjoy blending artistic creativity with purposeful design strategy.</p>
-      </div>
-      <div class="about-block">
-        <div class="about-block-label">◎ Experience</div>
-        <ul>
-          <li contenteditable="true">[Year] — Freelance Designer</li>
-          <li contenteditable="true">[Year] — JCCU Multimedia Lead</li>
-          <li contenteditable="true">[Year] — [Other experience]</li>
-        </ul>
-      </div>
-      <div class="about-block">
-        <div class="about-block-label">◎ Interests</div>
-        <ul>
-          <li contenteditable="true">Illustration & Character Design</li>
-          <li contenteditable="true">Typography & Layout</li>
-          <li contenteditable="true">Anime & Japanese Culture</li>
-          <li contenteditable="true">3D Rendering & Lighting</li>
-        </ul>
-      </div>
-    </div>
+        <!-- Color Palette Badges -->
+        <div class="grid grid-cols-3 gap-3 mb-8">
+          <div class="p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col gap-1">
+            <div class="w-full h-3 rounded-md bg-brand"></div>
+            <span class="text-xs font-semibold text-body mt-1">Purple Font</span>
+            <span class="text-[11px] font-mono text-body/50">#6253B0</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col gap-1">
+            <div class="w-full h-3 rounded-md bg-body"></div>
+            <span class="text-xs font-semibold text-body mt-1">Body Text</span>
+            <span class="text-[11px] font-mono text-body/50">#253149</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col gap-1">
+            <div class="w-full h-3 rounded-md bg-bg-light border border-gray-200"></div>
+            <span class="text-xs font-semibold text-body mt-1">Background</span>
+            <span class="text-[11px] font-mono text-body/50">#F8FEFC</span>
+          </div>
+        </div>
 
-    <div class="about-block" style="margin-bottom:1rem">
-      <div class="about-block-label">◎ Skills & Software</div>
-      <div style="margin-top:.4rem">
-        <div class="skill-row2"><div class="skill-icon">Ai</div><span class="skill-name">Adobe Illustrator</span><div class="skill-track"><div class="skill-fill" style="width:92%"></div></div><span class="skill-note">Expert</span></div>
-        <div class="skill-row2"><div class="skill-icon">Ps</div><span class="skill-name">Adobe Photoshop</span><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div><span class="skill-note">Advanced</span></div>
-        <div class="skill-row2"><div class="skill-icon">Pp</div><span class="skill-name">Procreate</span><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div><span class="skill-note">Advanced</span></div>
-        <div class="skill-row2"><div class="skill-icon">Fg</div><span class="skill-name">Figma</span><div class="skill-track"><div class="skill-fill" style="width:78%"></div></div><span class="skill-note">Proficient</span></div>
-        <div class="skill-row2"><div class="skill-icon">Ae</div><span class="skill-name">After Effects</span><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div><span class="skill-note">Proficient</span></div>
-        <div class="skill-row2"><div class="skill-icon">Id</div><span class="skill-name">Adobe InDesign</span><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div><span class="skill-note">Intermediate</span></div>
-        <div class="skill-row2"><div class="skill-icon">My</div><span class="skill-name">Autodesk Maya</span><div class="skill-track"><div class="skill-fill" style="width:60%"></div></div><span class="skill-note">Intermediate</span></div>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- List Items / Content Cards (Image 3 Style) -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-body/40 mb-2">Project Items</h3>
+          
+          <!-- Item 1 -->
+          <div class="p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold">
+                01
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-body">Purple Background Card</h4>
+                <p class="text-xs text-body/60">Includes curved geometric lines & glow effect</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600">Active</span>
+          </div>
 
-<!-- ═══════ CONTACT ═══════ -->
-<div id="contact" class="page">
-  <h2 style="font-family:var(--font-d);font-style:italic;font-size:1.9rem;margin-bottom:.3rem">Let's connect</h2>
-  <p style="font-size:.84rem;color:var(--ink3);margin-bottom:1.8rem;max-width:42ch;line-height:1.7">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
-  <div class="contact-layout">
-    <div class="contact-form">
-      <div class="f-group"><label class="f-label">Name</label><input class="f-input" type="text" placeholder="Your name"></div>
-      <div class="f-group"><label class="f-label">Email</label><input class="f-input" type="email" placeholder="email@example.com"></div>
-      <div class="f-group"><label class="f-label">Project type</label><input class="f-input" type="text" placeholder="e.g. Brand identity, illustration"></div>
-      <div class="f-group"><label class="f-label">Message</label><textarea class="f-input f-ta" placeholder="Tell me about your project…"></textarea></div>
-      <button class="btn btn-liberty">Send message</button>
-    </div>
-    <div class="contact-side">
-      <div class="contact-card glass">
-        <h4>Find me online</h4>
-        <a href="#" class="c-link"><span class="c-icon">◈</span>@monokitsune</a>
-        <a href="#" class="c-link"><span class="c-icon">✉</span>hello@syafiqahsolas.design</a>
-        <a href="#" class="c-link"><span class="c-icon">⬡</span>Behance</a>
-        <a href="#" class="c-link"><span class="c-icon">◇</span>LinkedIn</a>
-        <a href="#" class="c-link"><span class="c-icon">◻</span>GitHub</a>
-      </div>
-      <div class="contact-card glass">
-        <h4>Availability</h4>
-        <p style="font-size:.82rem;color:var(--ink2);line-height:1.75" contenteditable="true">Currently open to freelance projects and collaborations. Typical response within 24–48 hours.</p>
-      </div>
-    </div>
-  </div>
-</div>
+          <!-- Item 2 -->
+          <div class="p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold">
+                02
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-body">Primary Typography</h4>
+                <p class="text-xs text-body/60">Configured with #253149 for high readability</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-brand/10 text-brand">Updated</span>
+          </div>
 
-</main>
-
-<!-- PROJECT POPUP -->
-<div class="overlay" id="popupOverlay">
-  <div class="popup-box">
-    <button class="popup-close" id="popupClose">✕</button>
-    <div class="popup-thumb" id="popupThumb"></div>
-    <div class="popup-body">
-      <div class="popup-cat" id="popupCat"></div>
-      <div class="popup-title" id="popupTitle"></div>
-      <div class="popup-desc" id="popupDesc"></div>
-      <div class="popup-tags" id="popupTags"></div>
-      <div class="popup-actions">
-        <button class="btn btn-liberty" id="popupFullBtn">View full details</button>
-        <button class="btn btn-ghost" id="popupClose2">Close</button>
+          <!-- Item 3 -->
+          <div class="p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold">
+                03
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-body">Responsive Layout</h4>
+                <p class="text-xs text-body/60">Two-column card structure matching Image 3</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-gray-100 text-body/60">Ready</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Bottom Action Footer -->
+      <div class="mt-8 pt-6 border-t border-gray-200/60 flex items-center justify-between">
+        <span class="text-xs font-medium text-body/50">Last synchronized: Just now</span>
+        <div class="flex gap-3">
+          <button class="px-4 py-2.5 rounded-xl border border-gray-200 font-semibold text-sm text-body hover:bg-gray-50 transition-colors">
+            Cancel
+          </button>
+          <button class="px-5 py-2.5 rounded-xl bg-brand hover:bg-brand-dark font-semibold text-sm text-white shadow-md shadow-brand/20 transition-colors">
+            Save Changes
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
 
-<!-- ADD PROJECT MODAL -->
-<div class="form-overlay" id="addProjOverlay">
-  <div class="form-box">
-    <h3>Add Project</h3>
-    <div class="f-group"><label class="f-label">Title</label><input class="f-input" id="np-title" placeholder="Project title"></div>
-    <div class="f-group"><label class="f-label">Category</label>
-      <select class="f-input" id="np-cat">
-        <option>Graphic Design</option><option>Illustration</option><option>Interface Design</option><option>3D Modelling</option><option>In Progress</option>
-      </select>
-    </div>
-    <div class="f-group"><label class="f-label">Short overview</label><textarea class="f-input" id="np-desc" style="min-height:70px"></textarea></div>
-    <div class="f-group"><label class="f-label">Emoji icon</label><input class="f-input" id="np-emoji" placeholder="🎨"></div>
-    <div class="f-group"><label class="f-label">Card colour (hex)</label><input class="f-input" id="np-color" placeholder="#5B61B2"></div>
-    <div class="f-group"><label class="f-label">Tags (comma separated)</label><input class="f-input" id="np-tags" placeholder="Adobe Illustrator, Print"></div>
-    <div class="f-group"><label class="f-label">Target audience</label><input class="f-input" id="np-audience"></div>
-    <div class="f-group"><label class="f-label">Software used</label><input class="f-input" id="np-software"></div>
-    <div class="f-group"><label class="f-label">Colour palette (hex, comma separated)</label><input class="f-input" id="np-palette" placeholder="#5B61B2, #EEE2DF"></div>
-    <div class="f-group"><label class="f-label">Design process</label><textarea class="f-input" id="np-process" style="min-height:70px"></textarea></div>
-    <div class="f-group"><label class="f-label">Iteration notes</label><textarea class="f-input" id="np-iter" style="min-height:60px"></textarea></div>
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="document.getElementById('addProjOverlay').classList.remove('open')">Cancel</button>
-      <button class="btn btn-liberty" id="confirmAddProj">Add project</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* ══ DATA ══ */
-const DEFAULTS = [
-  {id:'p1',title:'Merry Ice-Cream Campaign',cat:'Graphic Design',emoji:'🍦',color:'linear-gradient(135deg,#FFB6C1,#FFD700)',desc:'Billboard, ATL advertisement, and BTL flyer for Merry Ice Cream, a local Malaysian brand. Bright colours and playful visuals for the billboard; enticing typography for ATL; detailed BTL flyer maintaining the fun tone.',tags:['Adobe Illustrator','Billboard','ATL','BTL','Print'],audience:'General Malaysian public, families and young adults',software:'Adobe Illustrator',palette:['#FF6B9D','#FFD700','#FF4444','#FFFFFF'],process:'Started with mood-boarding around the brand personality — joyful and indulgent. Sketched billboard layouts prioritising legibility at distance, then adapted the visual language down to the flyer format.',iter:'Tested three colour directions. Final palette leans into the brand\'s playful warmth while staying readable at 48-sheet scale.',moodboard:'Bright tropical palette, bold sans-serif, playful ice cream motifs'},
-  {id:'p2',title:'Luna Apothecary Brochure',cat:'Graphic Design',emoji:'🌿',color:'linear-gradient(135deg,#C8D5B9,#03312E)',desc:'Two distinct brochures for Luna Apothecary — one promoting the brand story and mission, another sharing herb cooking tips and recipes. Both reflect holistic wellness and natural remedy branding.',tags:['Adobe Illustrator','Brochure','Print','Brand'],audience:'Wellness-conscious adults, herbal enthusiasts',software:'Adobe Illustrator',palette:['#03312E','#668F80','#E8F7EE','#FCFAF9'],process:'Designed two distinct visual voices within the same brand — editorial storytelling for the brand brochure, approachable recipe layout for the cooking guide.',iter:'Iterated on the recipe layout for readability with mixed text and visual density.',moodboard:'Deep forest green, sage, cream; botanical illustration style'},
-  {id:'p3',title:'Aqilah Arsyad — Business Card',cat:'Graphic Design',emoji:'💼',color:'linear-gradient(135deg,#2D2D2D,#5B61B2)',desc:'Professional business card for Aqilah Arsyad Management Company, an accounting and consultation firm. The design embodies trust, competence, and a lasting professional impression.',tags:['Adobe Illustrator','Business Card','Print','Corporate'],audience:'Business clients and partners',software:'Adobe Illustrator',palette:['#1A1A2E','#5B61B2','#EEE2DF','#FFFFFF'],process:'Prioritised clean hierarchy — name and role as primary anchors. Chose a structured sans-serif to reflect the firm\'s analytical nature.',iter:'Explored minimal and detailed directions; landed on a restrained layout with a distinctive colour accent.',moodboard:'Corporate navy, structured layout, premium print finish'},
-  {id:'p4',title:'JCCU Event Posters',cat:'Graphic Design',emoji:'🎌',color:'linear-gradient(135deg,#FF6B6B,#4ECDC4)',desc:'Poster series for Japanese Culture Club at UNITEN events. Vibrant visuals and engaging layouts with subtle motion elements and animated mascot assets for social media. Animated AGM poster used mascot movement to boost engagement.',tags:['Adobe Illustrator','After Effects','Poster','Animation','Social Media'],audience:'University students, Japanese culture enthusiasts',software:'Adobe Illustrator, After Effects',palette:['#FF6B6B','#4ECDC4','#FFE66D','#292F36'],process:'Collaborated with an illustrator for custom mascot assets, then built layouts around those characters. Motion was added in After Effects to extend poster life on social feeds.',iter:'Several rounds of layout iteration to balance text and mascot placement; animation refined for smooth looping.',moodboard:'Energetic, club atmosphere, J-culture aesthetic'},
-  {id:'p5',title:'JCCU Multimedia Guideline',cat:'Interface Design',emoji:'📋',color:'linear-gradient(135deg,#6DA0E1,#5B61B2)',desc:'Interactive PowerPoint multimedia guidelines developed for the JCCU Multimedia department. Features Home buttons, Table of Contents navigation, and external website links — making it a navigable reference document.',tags:['Google Slides','PowerPoint','Navigation','Guidelines','UI'],audience:'JCCU Multimedia department members',software:'Google Slides / PowerPoint',palette:['#5B61B2','#6DA0E1','#EEE2DF','#FFFFFF'],process:'Structured around how department members would actually use it — quick reference over linear reading. Built interactive navigation first, then filled content.',iter:'Tested navigation flow with actual members; simplified link structure based on feedback.',moodboard:'Clean, instructional, club colour system'},
-  {id:'p6',title:'Chinese Sweets — Mobile App',cat:'Interface Design',emoji:'🍡',color:'linear-gradient(135deg,#FF9A9E,#FAD0C4)',desc:'Mobile app designed in Figma during diploma studies to share knowledge about Chinese sweet desserts. Emphasises user accessibility with a clean interface — home button, back navigation, and categorised dessert information.',tags:['Figma','Mobile App','UI/UX','Interface'],audience:'Food enthusiasts, users curious about Chinese cuisine',software:'Figma',palette:['#FF9A9E','#FAD0C4','#FFECD2','#A18CD1'],process:'Started with user flow mapping, ensuring every screen was reachable in two taps. Kept the visual language warm and inviting to match the subject matter.',iter:'Refined the category screen after testing with peers; added visual hierarchy to differentiate dessert types.',moodboard:'Warm pastels, round UI elements, approachable and appetising'},
-  {id:'p7',title:'Akiko — Character Illustration',cat:'Illustration',emoji:'🌸',color:'linear-gradient(135deg,#E0C1D8,#FFD6BE)',desc:'Ongoing illustration series of Akiko, the mascot character for the Japanese Culture Club UNITEN. Created for various events, reflecting the club\'s vibrant spirit and love for Japanese culture.',tags:['Procreate','Illustration','Character Design','Mascot'],audience:'University community, Japanese culture enthusiasts',software:'Procreate, Adobe Illustrator',palette:['#FFB7C5','#E0C1D8','#9381FF','#FFFFFF'],process:'Developed Akiko\'s visual identity to be adaptable across event themes — same character design, different costumes and expressions for each occasion.',iter:'Iterated on proportions to land on a style that reads clearly even at small social media sizes.',moodboard:'Soft anime aesthetic, warm sakura palette, expressive linework'},
-  {id:'p8',title:'Discord Banner Series',cat:'Illustration',emoji:'🖼️',color:'linear-gradient(135deg,#1A1A2E,#5B61B2)',desc:'Collection of Discord banners for unique server themes — from the enigmatic crow server (black month theme) to a vibrant JCCU Halloween celebration. Each reflects community identity and creative storytelling.',tags:['Procreate','Photoshop','Illustration','Banner','Digital'],audience:'Discord server communities',software:'Procreate, Adobe Photoshop',palette:['#1A1A2E','#5B61B2','#FF6B6B','#2ECC71'],process:'Each banner was treated as its own mini-brief — colour, tone, and imagery all derived from the server\'s theme and community culture.',iter:'Explored different aspect ratios and visual weights before finding what works for Discord\'s banner crop.',moodboard:'Dark atmospheric, bold character focus, theme-driven palettes'},
-  {id:'p9',title:'Personal Illustration',cat:'Illustration',emoji:'🎨',color:'linear-gradient(135deg,#F093FB,#F5576C)',desc:'Personal illustration projects exploring diverse themes and styles as a creative outlet. These pieces allow for experimentation with visual storytelling beyond client briefs.',tags:['Procreate','Illustration','Personal','Creative'],audience:'General art audience, personal archive',software:'Procreate',palette:['#F093FB','#F5576C','#4FACFE','#FFECD2'],process:'No brief, no constraints — these are explorations. Each piece starts with a feeling or a visual prompt and evolves through the drawing itself.',iter:'Constantly experimenting with new brushes, colour approaches, and subject matter.',moodboard:'Varied — experimental, expressive, personal narrative'},
-  {id:'p10',title:'Jewelleries — 3D Modelling',cat:'3D Modelling',emoji:'💍',color:'linear-gradient(135deg,#DAA520,#8B4513)',desc:'3D recreation of real-life jewellery pieces. Started with hand-drawn sketches in Adobe Photoshop as design foundation, then modelled digitally in Maya — emphasising precision and translating physical elegance into 3D.',tags:['Autodesk Maya','Adobe Photoshop','3D Modelling','Jewellery'],audience:'Academic assessment, design portfolio',software:'Autodesk Maya, Adobe Photoshop',palette:['#DAA520','#C0C0C0','#1A1A2E','#FFECD2'],process:'Studied the physical pieces in detail before sketching. Sketches served as reference for Maya modelling — working from flat to volumetric, refining edge loops for organic jewellery curves.',iter:'Several iterations on the ring and clasp geometry to achieve believable proportions.',moodboard:'Precious metal textures, clean studio lighting, precision-forward'},
-  {id:'p11',title:'Bittersweet — 3D Digital Lighting',cat:'3D Modelling',emoji:'🌅',color:'linear-gradient(135deg,#667eea,#764ba2)',desc:'3D interior hallway with a view of a withering garden. Explores the interplay of dimming light and early abandonment — quiet melancholy in a modern-meets-nature space. Lighting diagram created in Adobe Illustrator.',tags:['Autodesk Maya','Adobe Illustrator','3D Lighting','Interior','Atmosphere'],audience:'Academic assessment, design portfolio',software:'Autodesk Maya, Adobe Illustrator',palette:['#667eea','#764ba2','#2C3E50','#ECF0F1'],process:'Designed around a specific mood: the last light on a neglected space. Extensive trial and error in Maya lighting rigs to achieve the balance between architectural clarity and emotional atmosphere.',iter:'Tested warm vs cool key light — settled on a cool desaturated main with warm bounce from garden remnants.',moodboard:'Interior architecture, dusk light, melancholy beauty, wabi-sabi'},
-  {id:'p12',title:'Interactive Quiz — PowerPoint',cat:'In Progress',emoji:'⚡',color:'linear-gradient(135deg,#F2A62D,#E05555)',desc:'12-slide interactive quiz built in PowerPoint with VBA-powered logic. Demonstrates technical fluency in presentation software beyond slide decks — navigation, answer tracking, and dynamic feedback built into the .pptm format.',tags:['PowerPoint','VBA','Interactive','Quiz','In Progress'],audience:'Educational use, portfolio showcase',software:'Microsoft PowerPoint (PPTM)',palette:['#F2A62D','#E05555','#1A1A2E','#FFFFFF'],process:'Mapped out the quiz flow and branching logic before building. Implemented VBA macros for score tracking and conditional navigation between slides.',iter:'Currently refining answer validation and end-screen results display.',moodboard:'Clean quiz UI, clear feedback states, bold CTA buttons'}
-];
-
-let projects = JSON.parse(localStorage.getItem('pf_projects') || 'null') || DEFAULTS;
-function save(){ localStorage.setItem('pf_projects', JSON.stringify(projects)); }
-function getProj(id){ return projects.find(p=>p.id===id); }
-
-/* ══ NAV ══ */
-const BC = {home:'Dashboard',projects:'Projects',about:'About Me',contact:'Contact','proj-detail':'Projects'};
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===id));
-  document.getElementById('bc-section').textContent = BC[id]||id;
-  const sub = document.getElementById('bc-sub');
-  sub.style.display = 'none';
-  window.scrollTo(0,0);
-  if(id==='projects') renderGallery('all');
-}
-document.querySelectorAll('[data-page]').forEach(el=>{
-  el.addEventListener('click',e=>{e.preventDefault();showPage(el.dataset.page);});
-});
-
-/* Topbar date */
-document.getElementById('topbar-date').textContent = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-
-/* ══ PETAL CANVAS ══ */
-(function(){
-  const c=document.getElementById('petal-c');
-  const ctx=c.getContext('2d');
-  let W,H;
-  const P=[];
-  const S=['✦','❀','✿','·','꩜'];
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-  resize();window.addEventListener('resize',resize);
-  for(let i=0;i<28;i++) P.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,s:S[Math.floor(Math.random()*S.length)],sz:Math.random()*11+5,vy:Math.random()*.3+.08,vx:(Math.random()-.5)*.2,angle:Math.random()*360,spin:(Math.random()-.5)*.5,a:Math.random()*.3+.1});
-  function draw(){ctx.clearRect(0,0,W,H);P.forEach(p=>{ctx.save();ctx.globalAlpha=p.a;ctx.font=`${p.sz}px serif`;ctx.translate(p.x,p.y);ctx.rotate(p.angle*Math.PI/180);ctx.fillStyle='#5B61B2';ctx.fillText(p.s,0,0);ctx.restore();p.y+=p.vy;p.x+=p.vx;p.angle+=p.spin;if(p.y>H+20){p.y=-20;p.x=Math.random()*W;}if(p.x>W+20)p.x=-20;if(p.x<-20)p.x=W+20;});requestAnimationFrame(draw);}
-  draw();
-})();
-
-/* ══ TOAST ══ */
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
-
-/* ══ GALLERY RENDER ══ */
-function renderGallery(filter){
-  const g=document.getElementById('bookGallery');
-  g.innerHTML='';
-  const filtered=filter==='all'?projects:projects.filter(p=>p.cat===filter);
-  filtered.forEach(p=>{
-    const card=document.createElement('div');
-    card.className='book-card';
-    const isIP=p.cat==='In Progress';
-    card.innerHTML=`
-      <div class="book-cover" style="background:${p.color}" onclick="openPopup('${p.id}')">
-        ${isIP?'<div class="in-progress-badge">IN PROGRESS</div>':''}
-        <span style="font-size:2.4rem">${p.emoji}</span>
-        <span class="book-cover-label">${p.title}</span>
-      </div>
-      <div class="book-card-title">${p.title}</div>
-      <div class="book-card-cat">${p.cat}</div>`;
-    g.appendChild(card);
-  });
-  // Add card
-  const add=document.createElement('div');
-  add.className='book-card book-card-add';
-  add.innerHTML=`<div class="book-cover" onclick="document.getElementById('addProjOverlay').classList.add('open')"><span style="font-size:1.8rem;opacity:.5">＋</span><span class="book-cover-label" style="opacity:.5">Add project</span></div><div class="book-card-title" style="opacity:.4">New project</div>`;
-  g.appendChild(add);
-}
-
-/* Filter buttons */
-document.getElementById('catFilter').addEventListener('click',e=>{
-  if(!e.target.classList.contains('filter-btn'))return;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  renderGallery(e.target.dataset.filter);
-});
-
-/* ══ POPUP ══ */
-function openPopup(id){
-  const p=getProj(id);
-  if(!p)return;
-  document.getElementById('popupThumb').style.background=p.color;
-  document.getElementById('popupThumb').textContent=p.emoji;
-  document.getElementById('popupThumb').style.fontSize='3.5rem';
-  document.getElementById('popupCat').textContent=p.cat;
-  document.getElementById('popupTitle').textContent=p.title;
-  document.getElementById('popupDesc').textContent=p.desc;
-  const tags=document.getElementById('popupTags');
-  tags.innerHTML=(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
-  document.getElementById('popupFullBtn').onclick=()=>{document.getElementById('popupOverlay').classList.remove('open');openDetail(id);};
-  document.getElementById('popupOverlay').classList.add('open');
-}
-document.getElementById('popupClose').onclick=()=>document.getElementById('popupOverlay').classList.remove('open');
-document.getElementById('popupClose2').onclick=()=>document.getElementById('popupOverlay').classList.remove('open');
-document.getElementById('popupOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('popupOverlay'))document.getElementById('popupOverlay').classList.remove('open');});
-
-/* ══ DETAIL PAGE ══ */
-function openDetail(id){
-  const p=getProj(id);if(!p)return;
-  // breadcrumb
-  document.getElementById('bc-sub').style.display='inline';
-  document.getElementById('bc-sub-text').textContent=p.title;
-  // hero
-  const hero=document.getElementById('detailHeroImg');
-  hero.style.background=p.color;
-  hero.innerHTML=`<span style="font-size:4rem">${p.emoji}</span>`;
-  // meta
-  const swatches=(p.palette||[]).map(c=>`<div class="swatch" style="background:${c}" title="${c}"></div>`).join('');
-  document.getElementById('detailMeta').innerHTML=`
-    <div class="meta-row"><label>Category</label><span>${p.cat}</span></div>
-    <div class="meta-row"><label>Target Audience</label><span contenteditable="true" onblur="saveField('${id}','audience',this.textContent)">${p.audience||'—'}</span></div>
-    <div class="meta-row"><label>Software Used</label><span contenteditable="true" onblur="saveField('${id}','software',this.textContent)">${p.software||'—'}</span></div>
-    <div class="meta-row"><label>Colour Palette</label><div class="colour-swatches" style="margin-top:.5rem">${swatches}</div></div>
-    <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
-      <button class="btn btn-liberty btn-sm" onclick="editDetailProject('${id}')">Edit project</button>
-    </div>`;
-  // panels (draggable)
-  const panels=[
-    {key:'desc',label:'Project Overview',val:p.desc},
-    {key:'moodboard',label:'Moodboard & Colour Palette',val:p.moodboard||''},
-    {key:'process',label:'Design Thought Process',val:p.process||''},
-    {key:'iter',label:'Iteration & Sketching',val:p.iter||''},
-    {key:'audience',label:'Target Audience',val:p.audience||''},
-    {key:'software',label:'Software Used',val:p.software||''}
-  ];
-  const container=document.getElementById('detailPanels');
-  container.innerHTML=`<div style="font-family:var(--font-d);font-style:italic;font-size:1.6rem;margin-bottom:.5rem">${p.title}</div>`;
-  const wrap=document.createElement('div');
-  wrap.id='panelWrap';wrap.style.cssText='display:flex;flex-direction:column;gap:1rem;';
-  panels.forEach(pan=>{
-    const el=document.createElement('div');
-    el.className='detail-panel';el.draggable=true;
-    el.dataset.key=pan.key;
-    el.innerHTML=`<div class="panel-header"><span class="panel-label">${pan.label}</span><span class="panel-drag-handle">⠿</span></div><div class="panel-body"><p contenteditable="true" spellcheck="false" onblur="saveField('${id}','${pan.key}',this.textContent)">${pan.val}</p></div>`;
-    wrap.appendChild(el);
-  });
-  container.appendChild(wrap);
-  setupDrag(wrap);
-  showPage('proj-detail');
-}
-function saveField(projId,key,val){
-  const p=getProj(projId);if(!p)return;
-  p[key]=val;save();toast('Saved');
-}
-document.getElementById('detailBack').onclick=()=>{showPage('projects');};
-
-/* drag to rearrange panels */
-function setupDrag(container){
-  let dragged=null;
-  container.querySelectorAll('.detail-panel').forEach(p=>{
-    p.addEventListener('dragstart',()=>{dragged=p;p.style.opacity='.4';});
-    p.addEventListener('dragend',()=>{p.style.opacity='1';dragged=null;});
-    p.addEventListener('dragover',e=>{e.preventDefault();const r=p.getBoundingClientRect();const mid=r.top+r.height/2;if(dragged&&dragged!==p){if(e.clientY<mid)container.insertBefore(dragged,p);else container.insertBefore(dragged,p.nextSibling);}});
-  });
-}
-
-/* edit project (reopen form prefilled) */
-function editDetailProject(id){
-  const p=getProj(id);if(!p)return;
-  document.getElementById('np-title').value=p.title;
-  document.getElementById('np-cat').value=p.cat;
-  document.getElementById('np-desc').value=p.desc;
-  document.getElementById('np-emoji').value=p.emoji;
-  document.getElementById('np-color').value='';
-  document.getElementById('np-tags').value=(p.tags||[]).join(', ');
-  document.getElementById('np-audience').value=p.audience||'';
-  document.getElementById('np-software').value=p.software||'';
-  document.getElementById('np-palette').value=(p.palette||[]).join(', ');
-  document.getElementById('np-process').value=p.process||'';
-  document.getElementById('np-iter').value=p.iter||'';
-  const btn=document.getElementById('confirmAddProj');
-  const orig=btn.textContent;
-  btn.textContent='Update project';
-  btn.dataset.editId=id;
-  document.getElementById('addProjOverlay').classList.add('open');
-  btn.onclick=()=>doAdd(id);
-}
-
-/* ══ ADD/UPDATE PROJECT ══ */
-document.getElementById('confirmAddProj').onclick=function(){doAdd(this.dataset.editId);};
-function doAdd(editId){
-  const title=document.getElementById('np-title').value.trim();
-  if(!title){alert('Please enter a title.');return;}
-  const tags=document.getElementById('np-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
-  const palette=document.getElementById('np-palette').value.split(',').map(t=>t.trim()).filter(Boolean);
-  const colorVal=document.getElementById('np-color').value.trim();
-  if(editId){
-    const p=getProj(editId);
-    Object.assign(p,{title,cat:document.getElementById('np-cat').value,desc:document.getElementById('np-desc').value,emoji:document.getElementById('np-emoji').value||p.emoji,color:colorVal||p.color,tags,audience:document.getElementById('np-audience').value,software:document.getElementById('np-software').value,palette:palette.length?palette:p.palette,process:document.getElementById('np-process').value,iter:document.getElementById('np-iter').value});
-    save();toast('Project updated');
-    openDetail(editId);
-  } else {
-    projects.push({id:'p'+Date.now(),title,cat:document.getElementById('np-cat').value,desc:document.getElementById('np-desc').value,emoji:document.getElementById('np-emoji').value||'🎨',color:colorVal||'linear-gradient(135deg,#5B61B2,#6DA0E1)',tags,audience:document.getElementById('np-audience').value,software:document.getElementById('np-software').value,palette,process:document.getElementById('np-process').value,iter:document.getElementById('np-iter').value,moodboard:''});
-    save();toast('Project added');renderGallery('all');
-  }
-  document.getElementById('confirmAddProj').dataset.editId='';
-  document.getElementById('confirmAddProj').textContent='Add project';
-  document.getElementById('addProjOverlay').classList.remove('open');
-}
-document.getElementById('addProjOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('addProjOverlay')){document.getElementById('addProjOverlay').classList.remove('open');document.getElementById('confirmAddProj').dataset.editId='';}});
-
-// Initial gallery render
-renderGallery('all');
-</script>
 </body>
 </html>
